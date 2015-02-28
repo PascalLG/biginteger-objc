@@ -1,0 +1,105 @@
+\section{Class methods}
+
+%----------------------------------------------------------
+
+\functionname{bigintWithBigInteger:}
+
+Returns a \code{BigInteger} object initialized by copying the content of another given big integer.
+
+\code{+ (BigInteger *)bigintWithBigInteger:(BigInteger *)bigint}
+
+\docparams
+
+\begin{description}
+\item[bigint] \hfill \\ The big integer object from which to copy the content. Must not be \code{nil}.
+\end{description}
+
+\docretval
+
+A \code{BigInteger} object initialized by copying the content of the \emph{bigint} parameter.
+
+%----------------------------------------------------------
+
+\functionname{bigintWithInt32:}
+
+Initializes and returns a big integer containing a given 32-bit signed value.
+
+\code{+ (BigInteger *)bigintWithInt32:(int32\_t)x}
+
+\docparams
+
+\begin{description}
+\item[x] \hfill \\ The value for the new big integer.
+\end{description}
+
+\docretval
+
+A \code{BigInteger} object containing \emph{x}.
+
+%----------------------------------------------------------
+
+\functionname{bigintWithRandomNumberOfSize:exact:}
+
+Initializes and returns a \code{BigInteger} object containing a random value.
+
+\code{+ (BigInteger *)bigintWithRandomNumberOfSize:(int)bitcount exact:(BOOL)exact}
+
+\docparams
+
+\begin{description}
+\item[bitcount] \hfill \\ Length in bits of the generated random number. Should be greater than or equal to 2.
+\item[exact] \hfill \\ Indicates whether the returned big integer should contain exactly \emph{bitcount} bits or not. See discussion below.
+\end{description}
+
+\docretval
+
+A \code{BigInteger} object containing a random value of the specified length.
+
+\docdiscuss
+
+If the \emph{exact} parameter is set to \code{YES}, the returned big integer is exactly \emph{bitcount} bits long; in other words, its highest bit is always 1. If the \emph{exact} parameter is set to \code{NO}, all the bits in the returned big integer are fully random; this implies its length may be a little shorter than \emph{bitcount} bits if by chance the highest bits are 0's.
+
+This method internally uses the BSD \code{arc4random()} pseudo-random number generator. You don't need to seed this generator as it initializes itself the first time it is called. Please refer to "Mac OS X Manual Page For ARC4RANDOM(3)" for more information.
+
+%----------------------------------------------------------
+
+\functionname{bigintWithString:radix:}
+
+Initializes and returns a \code{BigInteger} object from the given string representation of an integer.
+
+\code{+ (BigInteger *)bigintWithString:(NSString *)num radix:(int)radix}
+
+\docparams
+
+\begin{description}
+\item[num] \hfill \\ The string representation of an integer. Must not be \code{nil}.
+\item[radix] \hfill \\ The radix to use to interpret \emph{num}. Should lie between 2 and 36 inclusive.
+\end{description}
+
+\docretval
+
+A \code{BigInteger} object initialized by translating the given string representation of an integer in the specified radix, or \code{nil} if an error occurs.
+
+\docdiscuss
+
+The allowed string representation consists of an optional minus sign followed by a sequence of one or more digits in the specified radix. The string should not contain any extraneous characters, such as white spaces for example.
+
+%----------------------------------------------------------
+
+\functionname{bigintWithUnsignedInt32:}
+
+Initializes and returns a big integer containing a given 32-bit unsigned value.
+
+\code{+ (BigInteger *)bigintWithUnsignedInt32:(uint32\_t)x}
+
+\docparams
+
+\begin{description}
+\item[x] \hfill \\ The value for the new big integer.
+\end{description}
+
+\docretval
+
+A \code{BigInteger} object containing \emph{x}.
+
+%----------------------------------------------------------

@@ -1,0 +1,54 @@
+\section{Overview}
+
+The \code{BigInteger} class implements immutable arbitrary-precision integers. It provides methods to perform usual arithmetic operations, as well as modular arithmetic, GCD calculation, primality testing, prime generation, and a few other miscellaneous operations.
+
+This class was not written with performance in mind. It rather focuses on correctness, portability, and good integration with the Cocoa Framework. If your application relies heavily on multi-precision integer computation, you will be luckier with C-oriented libraries such as GMP. But if you only need a little bit of modular arithmetic or want to occasionally generate a big prime number with a minimum development effort, then the \code{BigInteger} class is for you.
+
+\subsection{Installation}
+
+The \code{BigInteger} class comes in a header file and two universal libraries, one for each platform. To add big integer support to your project:
+
+\begin{itemize}
+
+\item Add the \code{BigInteger.h} file to your project.
+
+\item If you are targeting iOS, add the \code{libBigInteger-iOS.a} file. If you are targeting Mac OS X, add the \code{libBigInteger-MacOSX.a} file.
+
+\item Go to the Build Phases tab in the target settings. Open the "Link Binary With Libraries" panel and check the library file you have just added is present. If it is not, add it now by clicking +.
+
+\item Select the Build Settings tab and find the "Other Linker Flags" build setting. If it is not already present, add the flag \code{-ObjC} to this setting's value. This will tell the linker to link the whole \code{BigInteger} class into your application, even if the linker can’t tell which methods are used. This is needed because Objective-C is a dynamic language and the linker can’t always tell which classes and categories are used by your application code. 
+
+\item Don't forget to \code{\#import} the header file in every source file that requires the \code{BigInteger} class definition.
+
+\end{itemize}
+
+The universal library file for iOS contains five architectures: \code{armv7}, \code{armv7s} and \code{arm64} for device support, \code{i386} and \code{x86\_64} for simulator support. The universal library file for Mac OS X contains two architectures: \code{i386} and \code{x86\_64}. All functions behave the same whatever the platform, except for the \functionlink{hash} method.
+
+\subsection{Internal representation}
+
+Big integers are represented internally as an array of digits. On 32-bit architectures, each digit occupies 16 bits; on 64-bit architectures, each digit occupies 32 bits. In both cases, digits are stored in little-endian byte order: the least significant bits are stored at the lowest addresses of the array. You can retrieve the bits of a big integer using the \functionlink{getBytes:length:} method.
+
+Besides the integer bits, the \code{BigInteger} class also stores a sign flag to indicate negative numbers. This contrasts with native types such as \code{int} and \code{long} that usually represent negative numbers using 2's complement. Due to this difference, the \functionlink{shiftRight:} method does not behave on negative big integers as the C $>>$ operator behaves on negative integer values. Refer to this function's documentation for more information.
+
+\subsection{Maximal value}
+
+On 32-bit architectures, a big integer is limited to $2^{31}$ digits of 16 bits each, yielding to a maximal value of $2^{34359738368}$. On 64-bit architectures, a big integer is limited to $2^{63}$ digits of 32 bits each, yielding to a maximal value of $2^{295147905179352825856}$. These are only theoretical limits though; a physical computer will run out of memory far before reaching these values.
+
+For the sake of simplicity and performance, the \code{BigInteger} class does not perform any overflow control. It is up to the developer to ensure its application never involves integers larger than a few thousands of bits on a mobile platform such as an iPad or iPhone, and larger than a few millions of bits on a desktop computer.
+
+The most sensitive function is \functionlink{exp:}. It can produce billions of digits when the exponent grows. 
+
+\subsection{Sample code}
+
+The code snippet below illustrates how using the \code{BigInteger} class is easy. It simply generates a 200-bit long random prime number.
+
+\begin{Verbatim}[frame=single, framesep=2mm, rulecolor=\color{rulecolor}]
+BigInteger * p, * r;
+
+r = [[BigInteger alloc] initWithRandomNumberOfSize:200 exact:YES];
+p = [r nextProbablePrime];
+NSLog(@"prime = %@", [p toRadix:10]);
+[r release];
+\end{Verbatim}
+
+The first line allocates a \code{BigInteger} object and initializes its value with 200 random bits. The second line searches for the first prime greater than or equal to this number. The third line converts this number to its decimal representation and prints it to the debug console.

@@ -1,0 +1,587 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		507582BF16DBC2550029EA54 /* UniLib */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 507582C016DBC2550029EA54 /* Build configuration list for PBXAggregateTarget "UniLib" */;
+			buildPhases = (
+				507582C316DBC2860029EA54 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = UniLib;
+			productName = UniLib;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		502F597F18DB26B800373887 /* bitwise.m in Sources */ = {isa = PBXBuildFile; fileRef = 502F597E18DB26B800373887 /* bitwise.m */; };
+		502F598518DB4DDE00373887 /* bitwise.m in Sources */ = {isa = PBXBuildFile; fileRef = 502F597E18DB26B800373887 /* bitwise.m */; };
+		502F598618DB4DDF00373887 /* bitwise.m in Sources */ = {isa = PBXBuildFile; fileRef = 502F597E18DB26B800373887 /* bitwise.m */; };
+		5050C7DB16D50359009B4D06 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5050C7DA16D50359009B4D06 /* CoreFoundation.framework */; };
+		5050C7DE16D50359009B4D06 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5050C7DD16D50359009B4D06 /* main.m */; };
+		5050C7EB16D50414009B4D06 /* divide.m in Sources */ = {isa = PBXBuildFile; fileRef = 5050C7E616D50414009B4D06 /* divide.m */; };
+		5050C7EC16D50414009B4D06 /* init.m in Sources */ = {isa = PBXBuildFile; fileRef = 5050C7E716D50414009B4D06 /* init.m */; };
+		5050C7ED16D50414009B4D06 /* BigInteger.m in Sources */ = {isa = PBXBuildFile; fileRef = 5050C7EA16D50414009B4D06 /* BigInteger.m */; };
+		5075827F16D650220029EA54 /* compare.m in Sources */ = {isa = PBXBuildFile; fileRef = 5075827E16D650220029EA54 /* compare.m */; };
+		5075828116D68A430029EA54 /* multiply.m in Sources */ = {isa = PBXBuildFile; fileRef = 5075828016D68A430029EA54 /* multiply.m */; };
+		5075828316DAA9990029EA54 /* exp.m in Sources */ = {isa = PBXBuildFile; fileRef = 5075828216DAA9990029EA54 /* exp.m */; };
+		5075828516DB76800029EA54 /* prime.m in Sources */ = {isa = PBXBuildFile; fileRef = 5075828416DB76800029EA54 /* prime.m */; };
+		5075828716DB90410029EA54 /* addsub.m in Sources */ = {isa = PBXBuildFile; fileRef = 5075828616DB90410029EA54 /* addsub.m */; };
+		5075828E16DB99B10029EA54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5075828D16DB99B10029EA54 /* Foundation.framework */; };
+		5075829916DB9A0E0029EA54 /* init.m in Sources */ = {isa = PBXBuildFile; fileRef = 5050C7E716D50414009B4D06 /* init.m */; };
+		5075829A16DB9A110029EA54 /* compare.m in Sources */ = {isa = PBXBuildFile; fileRef = 5075827E16D650220029EA54 /* compare.m */; };
+		5075829B16DB9A180029EA54 /* addsub.m in Sources */ = {isa = PBXBuildFile; fileRef = 5075828616DB90410029EA54 /* addsub.m */; };
+		5075829C16DB9A180029EA54 /* multiply.m in Sources */ = {isa = PBXBuildFile; fileRef = 5075828016D68A430029EA54 /* multiply.m */; };
+		5075829D16DB9A180029EA54 /* divide.m in Sources */ = {isa = PBXBuildFile; fileRef = 5050C7E616D50414009B4D06 /* divide.m */; };
+		5075829E16DB9A180029EA54 /* exp.m in Sources */ = {isa = PBXBuildFile; fileRef = 5075828216DAA9990029EA54 /* exp.m */; };
+		5075829F16DB9A180029EA54 /* prime.m in Sources */ = {isa = PBXBuildFile; fileRef = 5075828416DB76800029EA54 /* prime.m */; };
+		507582A216DB9BB50029EA54 /* BigInteger.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5050C7E916D50414009B4D06 /* BigInteger.h */; };
+		507582A416DBBFAF0029EA54 /* BigInteger.m in Sources */ = {isa = PBXBuildFile; fileRef = 5050C7EA16D50414009B4D06 /* BigInteger.m */; };
+		507582C516DF86600029EA54 /* shift.m in Sources */ = {isa = PBXBuildFile; fileRef = 507582C416DF865F0029EA54 /* shift.m */; };
+		507582C616DF86600029EA54 /* shift.m in Sources */ = {isa = PBXBuildFile; fileRef = 507582C416DF865F0029EA54 /* shift.m */; };
+		507582C816E112470029EA54 /* euclide.m in Sources */ = {isa = PBXBuildFile; fileRef = 507582C716E112460029EA54 /* euclide.m */; };
+		507582C916E112470029EA54 /* euclide.m in Sources */ = {isa = PBXBuildFile; fileRef = 507582C716E112460029EA54 /* euclide.m */; };
+		5088186616E7DA0E0071AE16 /* log.m in Sources */ = {isa = PBXBuildFile; fileRef = 5088186516E7DA0E0071AE16 /* log.m */; };
+		5088186716E7DA0E0071AE16 /* log.m in Sources */ = {isa = PBXBuildFile; fileRef = 5088186516E7DA0E0071AE16 /* log.m */; };
+		5088186F16EA7BC90071AE16 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5088186E16EA7BC90071AE16 /* Cocoa.framework */; };
+		5088187D16EA7F7F0071AE16 /* init.m in Sources */ = {isa = PBXBuildFile; fileRef = 5050C7E716D50414009B4D06 /* init.m */; };
+		5088187E16EA7F830071AE16 /* compare.m in Sources */ = {isa = PBXBuildFile; fileRef = 5075827E16D650220029EA54 /* compare.m */; };
+		5088187F16EA7F870071AE16 /* addsub.m in Sources */ = {isa = PBXBuildFile; fileRef = 5075828616DB90410029EA54 /* addsub.m */; };
+		5088188016EA7F8A0071AE16 /* multiply.m in Sources */ = {isa = PBXBuildFile; fileRef = 5075828016D68A430029EA54 /* multiply.m */; };
+		5088188116EA7F8D0071AE16 /* divide.m in Sources */ = {isa = PBXBuildFile; fileRef = 5050C7E616D50414009B4D06 /* divide.m */; };
+		5088188216EA7F950071AE16 /* exp.m in Sources */ = {isa = PBXBuildFile; fileRef = 5075828216DAA9990029EA54 /* exp.m */; };
+		5088188316EA7F950071AE16 /* log.m in Sources */ = {isa = PBXBuildFile; fileRef = 5088186516E7DA0E0071AE16 /* log.m */; };
+		5088188416EA7F950071AE16 /* shift.m in Sources */ = {isa = PBXBuildFile; fileRef = 507582C416DF865F0029EA54 /* shift.m */; };
+		5088188516EA7F950071AE16 /* prime.m in Sources */ = {isa = PBXBuildFile; fileRef = 5075828416DB76800029EA54 /* prime.m */; };
+		5088188616EA7F950071AE16 /* euclide.m in Sources */ = {isa = PBXBuildFile; fileRef = 507582C716E112460029EA54 /* euclide.m */; };
+		5088188816EA7F990071AE16 /* BigInteger.m in Sources */ = {isa = PBXBuildFile; fileRef = 5050C7EA16D50414009B4D06 /* BigInteger.m */; };
+		5088188916EA7FB10071AE16 /* BigInteger.h in Headers */ = {isa = PBXBuildFile; fileRef = 5050C7E916D50414009B4D06 /* BigInteger.h */; settings = {ATTRIBUTES = (Private, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		5050C7D516D50359009B4D06 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		5075828A16DB99B10029EA54 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 16;
+			files = (
+				507582A216DB9BB50029EA54 /* BigInteger.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		502F597E18DB26B800373887 /* bitwise.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = bitwise.m; sourceTree = "<group>"; };
+		5050C7D716D50359009B4D06 /* BigInteger */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = BigInteger; sourceTree = BUILT_PRODUCTS_DIR; };
+		5050C7DA16D50359009B4D06 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		5050C7DD16D50359009B4D06 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		5050C7E616D50414009B4D06 /* divide.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = divide.m; sourceTree = "<group>"; };
+		5050C7E716D50414009B4D06 /* init.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = init.m; sourceTree = "<group>"; };
+		5050C7E816D50414009B4D06 /* private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = private.h; sourceTree = "<group>"; };
+		5050C7E916D50414009B4D06 /* BigInteger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BigInteger.h; sourceTree = "<group>"; };
+		5050C7EA16D50414009B4D06 /* BigInteger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BigInteger.m; sourceTree = "<group>"; };
+		5075827E16D650220029EA54 /* compare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = compare.m; sourceTree = "<group>"; };
+		5075828016D68A430029EA54 /* multiply.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = multiply.m; sourceTree = "<group>"; };
+		5075828216DAA9990029EA54 /* exp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = exp.m; sourceTree = "<group>"; };
+		5075828416DB76800029EA54 /* prime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = prime.m; sourceTree = "<group>"; };
+		5075828616DB90410029EA54 /* addsub.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = addsub.m; sourceTree = "<group>"; };
+		5075828C16DB99B10029EA54 /* libBigInteger-iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libBigInteger-iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5075828D16DB99B10029EA54 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		507582C416DF865F0029EA54 /* shift.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = shift.m; sourceTree = "<group>"; };
+		507582C716E112460029EA54 /* euclide.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = euclide.m; sourceTree = "<group>"; };
+		5088186516E7DA0E0071AE16 /* log.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = log.m; sourceTree = "<group>"; };
+		5088186D16EA7BC90071AE16 /* libBigInteger-MacOSX.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libBigInteger-MacOSX.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5088186E16EA7BC90071AE16 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		5088187116EA7BC90071AE16 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		5088187216EA7BC90071AE16 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		5088187316EA7BC90071AE16 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5050C7D416D50359009B4D06 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5050C7DB16D50359009B4D06 /* CoreFoundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5075828916DB99B10029EA54 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5075828E16DB99B10029EA54 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5088186A16EA7BC90071AE16 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5088186F16EA7BC90071AE16 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5050C7CE16D50359009B4D06 = {
+			isa = PBXGroup;
+			children = (
+				5050C7DC16D50359009B4D06 /* BigInteger */,
+				5050C7D916D50359009B4D06 /* Frameworks */,
+				5050C7D816D50359009B4D06 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		5050C7D816D50359009B4D06 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5050C7D716D50359009B4D06 /* BigInteger */,
+				5075828C16DB99B10029EA54 /* libBigInteger-iOS.a */,
+				5088186D16EA7BC90071AE16 /* libBigInteger-MacOSX.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5050C7D916D50359009B4D06 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5050C7DA16D50359009B4D06 /* CoreFoundation.framework */,
+				5075828D16DB99B10029EA54 /* Foundation.framework */,
+				5088186E16EA7BC90071AE16 /* Cocoa.framework */,
+				5088187016EA7BC90071AE16 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5050C7DC16D50359009B4D06 /* BigInteger */ = {
+			isa = PBXGroup;
+			children = (
+				5050C7DD16D50359009B4D06 /* main.m */,
+				5050C7EE16D5041B009B4D06 /* Library */,
+			);
+			path = BigInteger;
+			sourceTree = "<group>";
+		};
+		5050C7EE16D5041B009B4D06 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				5050C7F016D50482009B4D06 /* Private */,
+				5050C7EF16D50477009B4D06 /* Public */,
+			);
+			name = Library;
+			sourceTree = "<group>";
+		};
+		5050C7EF16D50477009B4D06 /* Public */ = {
+			isa = PBXGroup;
+			children = (
+				5050C7E916D50414009B4D06 /* BigInteger.h */,
+				5050C7EA16D50414009B4D06 /* BigInteger.m */,
+			);
+			name = Public;
+			sourceTree = "<group>";
+		};
+		5050C7F016D50482009B4D06 /* Private */ = {
+			isa = PBXGroup;
+			children = (
+				5050C7E816D50414009B4D06 /* private.h */,
+				5050C7E716D50414009B4D06 /* init.m */,
+				5075827E16D650220029EA54 /* compare.m */,
+				5075828616DB90410029EA54 /* addsub.m */,
+				5075828016D68A430029EA54 /* multiply.m */,
+				5050C7E616D50414009B4D06 /* divide.m */,
+				502F597E18DB26B800373887 /* bitwise.m */,
+				5075828216DAA9990029EA54 /* exp.m */,
+				5088186516E7DA0E0071AE16 /* log.m */,
+				507582C416DF865F0029EA54 /* shift.m */,
+				5075828416DB76800029EA54 /* prime.m */,
+				507582C716E112460029EA54 /* euclide.m */,
+			);
+			name = Private;
+			sourceTree = "<group>";
+		};
+		5088187016EA7BC90071AE16 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5088187116EA7BC90071AE16 /* AppKit.framework */,
+				5088187216EA7BC90071AE16 /* CoreData.framework */,
+				5088187316EA7BC90071AE16 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		5088186B16EA7BC90071AE16 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5088188916EA7FB10071AE16 /* BigInteger.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		5050C7D616D50359009B4D06 /* BigInteger */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5050C7E316D50359009B4D06 /* Build configuration list for PBXNativeTarget "BigInteger" */;
+			buildPhases = (
+				5050C7D316D50359009B4D06 /* Sources */,
+				5050C7D416D50359009B4D06 /* Frameworks */,
+				5050C7D516D50359009B4D06 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BigInteger;
+			productName = BigInteger;
+			productReference = 5050C7D716D50359009B4D06 /* BigInteger */;
+			productType = "com.apple.product-type.tool";
+		};
+		5075828B16DB99B10029EA54 /* BigInteger-iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5075829616DB99B20029EA54 /* Build configuration list for PBXNativeTarget "BigInteger-iOS" */;
+			buildPhases = (
+				5075828816DB99B10029EA54 /* Sources */,
+				5075828916DB99B10029EA54 /* Frameworks */,
+				5075828A16DB99B10029EA54 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "BigInteger-iOS";
+			productName = "BigInteger-iOS";
+			productReference = 5075828C16DB99B10029EA54 /* libBigInteger-iOS.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		5088186C16EA7BC90071AE16 /* BigInteger-MacOSX */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5088187A16EA7BC90071AE16 /* Build configuration list for PBXNativeTarget "BigInteger-MacOSX" */;
+			buildPhases = (
+				5088186916EA7BC90071AE16 /* Sources */,
+				5088186A16EA7BC90071AE16 /* Frameworks */,
+				5088186B16EA7BC90071AE16 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "BigInteger-MacOSX";
+			productName = "BigInteger-MacOSX";
+			productReference = 5088186D16EA7BC90071AE16 /* libBigInteger-MacOSX.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5050C7CF16D50359009B4D06 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "Æquans";
+			};
+			buildConfigurationList = 5050C7D216D50359009B4D06 /* Build configuration list for PBXProject "BigInteger" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 5050C7CE16D50359009B4D06;
+			productRefGroup = 5050C7D816D50359009B4D06 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5050C7D616D50359009B4D06 /* BigInteger */,
+				5075828B16DB99B10029EA54 /* BigInteger-iOS */,
+				5088186C16EA7BC90071AE16 /* BigInteger-MacOSX */,
+				507582BF16DBC2550029EA54 /* UniLib */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		507582C316DBC2860029EA54 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "XCODEBUILD_PATH=/Applications/Xcode.app/Contents/Developer/usr/bin\nXCODEBUILD=$XCODEBUILD_PATH/xcodebuild\n\n$XCODEBUILD -project BigInteger.xcodeproj -target \"BigInteger-iOS\" -sdk \"iphonesimulator\" -configuration \"Release\" clean build\n$XCODEBUILD -project BigInteger.xcodeproj -target \"BigInteger-iOS\" -sdk \"iphoneos\" -configuration \"Release\" clean build\n$XCODEBUILD -project BigInteger.xcodeproj -target \"BigInteger-MacOSX\" -sdk \"macosx10.10\" -configuration \"Release\" clean build\n\nlipo -create -output \"build/libBigInteger-iOS.a\" \"build/Release-iphoneos/libBigInteger-iOS.a\" \"build/Release-iphonesimulator/libBigInteger-iOS.a\"\n\ncp \"build/Release/libBigInteger-MacOSX.a\" \"build/libBigInteger-MacOSX.a\"\ncp \"BigInteger/BigInteger.h\" \"build/BigInteger.h\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5050C7D316D50359009B4D06 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5050C7DE16D50359009B4D06 /* main.m in Sources */,
+				5050C7EB16D50414009B4D06 /* divide.m in Sources */,
+				5050C7EC16D50414009B4D06 /* init.m in Sources */,
+				5050C7ED16D50414009B4D06 /* BigInteger.m in Sources */,
+				5075827F16D650220029EA54 /* compare.m in Sources */,
+				502F597F18DB26B800373887 /* bitwise.m in Sources */,
+				5075828116D68A430029EA54 /* multiply.m in Sources */,
+				5075828316DAA9990029EA54 /* exp.m in Sources */,
+				5075828516DB76800029EA54 /* prime.m in Sources */,
+				5075828716DB90410029EA54 /* addsub.m in Sources */,
+				507582C516DF86600029EA54 /* shift.m in Sources */,
+				507582C816E112470029EA54 /* euclide.m in Sources */,
+				5088186616E7DA0E0071AE16 /* log.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5075828816DB99B10029EA54 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5075829916DB9A0E0029EA54 /* init.m in Sources */,
+				5075829A16DB9A110029EA54 /* compare.m in Sources */,
+				5075829B16DB9A180029EA54 /* addsub.m in Sources */,
+				5075829C16DB9A180029EA54 /* multiply.m in Sources */,
+				5075829D16DB9A180029EA54 /* divide.m in Sources */,
+				5075829E16DB9A180029EA54 /* exp.m in Sources */,
+				5075829F16DB9A180029EA54 /* prime.m in Sources */,
+				507582A416DBBFAF0029EA54 /* BigInteger.m in Sources */,
+				507582C616DF86600029EA54 /* shift.m in Sources */,
+				507582C916E112470029EA54 /* euclide.m in Sources */,
+				5088186716E7DA0E0071AE16 /* log.m in Sources */,
+				502F598518DB4DDE00373887 /* bitwise.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5088186916EA7BC90071AE16 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5088187D16EA7F7F0071AE16 /* init.m in Sources */,
+				5088187E16EA7F830071AE16 /* compare.m in Sources */,
+				5088187F16EA7F870071AE16 /* addsub.m in Sources */,
+				5088188016EA7F8A0071AE16 /* multiply.m in Sources */,
+				5088188116EA7F8D0071AE16 /* divide.m in Sources */,
+				5088188216EA7F950071AE16 /* exp.m in Sources */,
+				5088188316EA7F950071AE16 /* log.m in Sources */,
+				5088188416EA7F950071AE16 /* shift.m in Sources */,
+				5088188516EA7F950071AE16 /* prime.m in Sources */,
+				5088188616EA7F950071AE16 /* euclide.m in Sources */,
+				5088188816EA7F990071AE16 /* BigInteger.m in Sources */,
+				502F598618DB4DDF00373887 /* bitwise.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		5050C7E116D50359009B4D06 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		5050C7E216D50359009B4D06 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = NDEBUG;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		5050C7E416D50359009B4D06 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		5050C7E516D50359009B4D06 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		5075829716DB99B20029EA54 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				DSTROOT = /tmp/BigInteger_iOS.dst;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos7.1;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		5075829816DB99B20029EA54 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				DSTROOT = /tmp/BigInteger_iOS.dst;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos7.1;
+				SKIP_INSTALL = YES;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		507582C116DBC2550029EA54 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		507582C216DBC2550029EA54 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		5088187B16EA7BC90071AE16 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx10.9;
+			};
+			name = Debug;
+		};
+		5088187C16EA7BC90071AE16 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx10.9;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5050C7D216D50359009B4D06 /* Build configuration list for PBXProject "BigInteger" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5050C7E116D50359009B4D06 /* Debug */,
+				5050C7E216D50359009B4D06 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5050C7E316D50359009B4D06 /* Build configuration list for PBXNativeTarget "BigInteger" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5050C7E416D50359009B4D06 /* Debug */,
+				5050C7E516D50359009B4D06 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5075829616DB99B20029EA54 /* Build configuration list for PBXNativeTarget "BigInteger-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5075829716DB99B20029EA54 /* Debug */,
+				5075829816DB99B20029EA54 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		507582C016DBC2550029EA54 /* Build configuration list for PBXAggregateTarget "UniLib" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				507582C116DBC2550029EA54 /* Debug */,
+				507582C216DBC2550029EA54 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5088187A16EA7BC90071AE16 /* Build configuration list for PBXNativeTarget "BigInteger-MacOSX" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5088187B16EA7BC90071AE16 /* Debug */,
+				5088187C16EA7BC90071AE16 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5050C7CF16D50359009B4D06 /* Project object */;
+}

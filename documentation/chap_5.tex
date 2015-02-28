@@ -1,0 +1,852 @@
+\section{Instance Methods}
+
+%----------------------------------------------------------
+
+\functionname{abs}
+
+Returns the absolute value of the receiver.
+
+\code{- (BigInteger *)abs}
+
+\docretval
+
+A \code{BigInteger} object containing the absolute value of the receiver. The returned object may be the same object as the original receiver if it already contains a positive integer.
+
+%----------------------------------------------------------
+
+\functionname{add:}
+
+Adds the given big integer to the receiver and returns the result.
+
+\code{- (BigInteger *)add:(BigInteger *)x}
+
+\docparams
+
+\begin{description}
+\item[x] \hfill \\ The big integer to add to the receiver. Must not be \code{nil}.
+\end{description}
+
+\docretval
+
+A \code{BigInteger} object containing the sum of the receiver and \emph{x}.
+
+%----------------------------------------------------------
+
+\functionname{bitCount}
+
+Returns the number of bits of the binary representation of the receiver.
+
+\code{- (int)bitCount}
+
+\docretval
+
+The number of bits of the binary representation of the value the receiver contains. This can also be interpreted as the one-based index of the most significant bit.
+
+\docdiscuss
+
+The \code{BigInteger} class does not represent negative values using 2's complement but using an extra sign bit. This sign bit is not included in the count this function returns.
+
+%----------------------------------------------------------
+
+\functionname{bitwiseNotUsingWidth:}
+
+Returns the result of a bitwise logical NOT on the receiver.
+
+\code{- (BigInteger *)bitwiseNotUsingWidth:(int)count}
+
+\docparams
+
+\begin{description}
+\item[count] \hfill \\ The number of bits on which the operation is performed (see discussion below). Should be greater or equal to 1.
+\end{description}
+
+\docretval
+
+A \code{BigInteger} object containing the bitwise logical NOT of the receiver.
+
+\docdiscuss
+
+Unlike native types, the \code{BigInteger} class does not represent numbers using a fixed number of bits. Instead, it dynamically adapts its width to drop the highest bits when they are null. This behavior may cause a problem when performing bitwise operations involving the NOT operator, because these highest bits being missing, they cannot be complemented to 1's by the NOT operator. Any subsequent operation then leads to unexpected result. For example, consider computing $x \wedge \neg y$ with $x = 10$ and $y = 2$ using a 8-bit native type and using the \code{BigInteger} class.
+
+\begin{center}
+\begin{tabular}{|l|c|c|} 
+\hline
+Operation & Using a fixed width native type & Using \code{BigInteger} objects \\
+\hline
+$y$ & \verb!00000010! & \verb!  10! \\
+$\neg y$ & \verb!11111101! & \verb!   1! \\
+$x$ & \verb!00001010! & \verb!1010! \\
+\hline
+$x \wedge \neg y$ & \verb!00001000! & \verb!   0! \\
+\hline
+\end{tabular}
+\end{center}
+
+To avoid this problem, the \code{bitwiseNotUsingWidth:} method provides a \emph{count} parameter that specifies the minimum number of bits on which the operation should be performed. If \emph{count} is greater than the actual width of the binary representation of the receiver, leading 0's are inserted on its left to expand it up to \emph{count} bits, prior to applying the NOT operator. If you do not care about the operation width, simply pass 1 for this parameter.
+
+Also note that the \code{BigInteger} class does not represent negative values using 2's complement but using an extra sign bit. Therefore this method behaves differently than the standard \textasciitilde{} operator on negative numbers.
+
+The signs of the operands are ignored. The returned value is always positive.
+
+%----------------------------------------------------------
+
+\functionname{bitwiseAnd:}
+
+Returns the result of a bitwise logical AND between the given big integer and the receiver.
+
+\code{- (BigInteger *)bitwiseAnd:(BigInteger *)x}
+
+\docparams
+
+\begin{description}
+\item[x] \hfill \\ The big integer to AND with the receiver. Must not be \code{nil}.
+\end{description}
+
+\docretval
+
+A \code{BigInteger} object containing the bitwise logical AND of the receiver and \emph{x}.
+
+\docdiscuss
+
+The \code{BigInteger} class does not represent negative values using 2's complement but using an extra sign bit. Therefore this method behaves differently than the standard \& operator on negative numbers.
+
+The signs of the operands are ignored. The returned value is always positive.
+
+%----------------------------------------------------------
+
+\functionname{bitwiseOr:}
+
+Returns the result of a bitwise logical OR between the given big integer and the receiver.
+
+\code{- (BigInteger *)bitwiseOr:(BigInteger *)x}
+
+\docparams
+
+\begin{description}
+\item[x] \hfill \\ The big integer to OR with the receiver. Must not be \code{nil}.
+\end{description}
+
+\docretval
+
+A \code{BigInteger} object containing the bitwise logical OR of the receiver and \emph{x}.
+
+\docdiscuss
+
+The \code{BigInteger} class does not represent negative values using 2's complement but using an extra sign bit. Therefore this method behaves differently than the standard \textbar{} operator on negative numbers.
+
+The signs of the operands are ignored. The returned value is always positive.
+
+%----------------------------------------------------------
+
+\functionname{bitwiseXor:}
+
+Returns the result of a bitwise logical XOR between the given big integer and the receiver.
+
+\code{- (BigInteger *)bitwiseXor:(BigInteger *)x}
+
+\docparams
+
+\begin{description}
+\item[x] \hfill \\ The big integer to XOR with the receiver. Must not be \code{nil}.
+\end{description}
+
+\docretval
+
+A \code{BigInteger} object containing the bitwise logical XOR of the receiver and \emph{x}.
+
+\docdiscuss
+
+The \code{BigInteger} class does not represent negative values using 2's complement but using an extra sign bit. Therefore this method behaves differently than the standard \textasciicircum{} operator on negative numbers.
+
+The signs of the operands are ignored. The returned value is always positive.
+
+%----------------------------------------------------------
+
+\functionname{compare:}
+
+Returns an \code{NSComparisonResult} value that indicates whether the receiver is greater than, equal to, or less than a given big integer.
+
+\code{- (NSComparisonResult)compare:(BigInteger *)bigint}
+
+\docparams
+
+\begin{description}
+\item[bigint] \hfill \\ The big integer with which to compare the receiver. Must not be \code{nil}.
+\end{description}
+
+\docretval
+
+\code{NSOrderedAscending} if the value of \emph{bigint} is greater than the receiver’s, \code{NSOrderedSame} if they are equal, and \code{NSOrderedDescending} if the value of \emph{bigint} is less than the receiver’s.
+
+%----------------------------------------------------------
+
+\functionname{copyWithZone:}
+
+Returns a new instance that is a copy of the receiver. 
+
+\code{- (id)copyWithZone:(NSZone *)zone}
+
+\docparams
+
+\begin{description}
+\item[zone] \hfill \\ The zone identifies an area of memory from which to allocate for the new instance. This parameter is deprecated and is present for compatibility only. You should always pass \code{nil}.
+\end{description}
+
+\docretval
+
+A \code{BigInteger} object that is a copy of the receiver.
+
+\docdiscuss
+
+The returned object is implicitly retained by the sender, who is therefore responsible for releasing it. You will typically never invoke this method but rather the \code{copy} method of \code{NSObject}, which will in turn call \code{copyWithZone:} passing \code{nil} for the zone.
+
+Since the \code{BigInteger} class is immutable, there is no point in creating several instances holding the same value, so the actual implementation simply returns \code{self}. This may change in a future release.
+
+%----------------------------------------------------------
+
+\functionname{description}
+
+Returns a string describing the content of the receiver.
+
+\code{- (NSString *)description}
+
+\docretval
+
+An \code{NSString} object containing a textual representation of the content of the receiver. This representation consists of an optional minus sign followed by one or more groups of hexadecimal digits.
+
+\docdiscuss
+
+This method is implicitly called by the Cocoa formatting functions to convert a given object into a string when they encounter the \%@ format specifier. The implementation in this \code{BigInteger} class is rather intended for debugging and logging purposes, though. To print a big integer in a user friendly manner, prefer using the \functionlink{toRadix:} method.
+
+%----------------------------------------------------------
+
+\functionname{divide:}
+
+Divides the receiver by the given big integer and returns the result.
+
+\code{- (BigInteger *)divide:(BigInteger *)div}
+
+\docparams
+
+\begin{description}
+\item[div] \hfill \\ The divisor. Must not be \code{nil}.
+\end{description}
+
+\docretval
+
+A \code{BigInteger} object containing the quotient of the receiver divided by \emph{div}.
+
+\docdiscuss
+
+The remainder of the division is lost. If you are interested in the remainder value, use the \functionlink{divide:remainder:} method instead.
+
+%----------------------------------------------------------
+
+\functionname{divide:remainder:}
+
+Divides the receiver by the given big integer, returns the result, and optionally returns the remainder.
+
+\code{- (BigInteger *)divide:(BigInteger *)div remainder:(BigInteger **)rem}
+
+\docparams
+
+\begin{description}
+\item[div] \hfill \\ The divisor. Must not be \code{nil}.
+\item[rem] \hfill \\ Upon return contains the remainder of the division. If you are not interested in the remainder, pass in \code{NULL} or use the \functionlink{divide:} method.
+\end{description}
+
+\docretval
+
+A \code{BigInteger} object containing the quotient of the receiver divided by \emph{div}. If the \emph{rem} parameter is not \code{NULL}, it is set to a \code{BigInteger} object containing the remainder of the division.
+
+The sign of the remainder is always the same as the sign of the receiver.
+
+%----------------------------------------------------------
+
+\functionname{encodeWithCoder:}
+
+Encodes the receiver using a given archiver.
+
+\code{- (void)encodeWithCoder:(NSCoder *)coder}
+
+\docparams
+
+\begin{description}
+\item[coder] \hfill \\ An archiver object.
+\end{description}
+
+\docdiscuss
+
+The \code{BigInteger} class only supports keyed archiving. If the \emph{coder} parameter points to an encoder that does not support keyed archiving, an exception is thrown.
+
+The encoding format is platform independent. An archive written on a 32-bit architecture can be read on a 64-bit architecture and conversely. This may prove useful when exchanging data between an iOS client application and a 64-bit server application, for example.
+
+For more information about serializing and archiving objects, please refer to the \code{NSCoding} protocol in the Cocoa documentation.
+
+%----------------------------------------------------------
+
+\functionname{exp:}
+
+Raises the receiver to the given exponent and returns the result.
+
+\code{- (BigInteger *)exp:(uint32\_t)exp}
+
+\docparams
+
+\begin{description}
+\item[exp] \hfill \\ The exponent to which the receiver should be raised.
+\end{description}
+
+\docretval
+
+A \code{BigInteger} object containing the value of the receiver raised to the given exponent.
+
+\docdiscuss
+
+Raising an integer to an exponent can lead to huge numbers. The \code{BigInteger} class does not restrict the value of \emph{exp} nor it imposes limits on the maximum length of the result; however, this method is likely to crash due to memory shortage when \emph{exp} becomes big.
+
+Since a negative exponent would lead to a fractional result the \code{BigInteger} class cannot handle, the \emph{exp} parameter is treated as an unsigned integer. You should pay attention to implicit conversions that may take place when passing a signed integer to this parameter. For example, passing -1 will be interpreted as passing $2^{32}-1$, which will probably lead to unexpected results.
+
+If you need to compute a modular exponentiation (that is $a^b \bmod m$) prefer using the \functionlink{exp:modulo:} method which performs this operation without explicitly building the intermediate result, saving both memory and processor time.
+
+%----------------------------------------------------------
+
+\functionname{exp:modulo:}
+
+Raises the receiver to the given exponent and returns the result modulo the given modulus.
+
+\code{- (BigInteger *)exp:(BigInteger *)exp modulo:(BigInteger *)mod}
+
+\docparams
+
+\begin{description}
+\item[exp] \hfill \\ The exponent to which the receiver should be raised. Should not be \code{nil}.
+\item[mod] \hfill \\ The modulus. Should not be \code{nil}.
+\end{description}
+
+\docretval
+
+A \code{BigInteger} object containing the value of the receiver raised to the given exponent modulo the given modulus.
+
+\docdiscuss
+
+Both the exponent and the modulus are expected to be positive. If they are not, the function raises an exception. Moreover, the modulus should not be zero.
+The return value is always positive and normalised between 0 and (\emph{modulus} - 1).
+
+%----------------------------------------------------------
+
+\functionname{getBytes:length:}
+
+Copies the content of the receiver to a byte array.
+
+\code{- (void)getBytes:(uint8\_t *)bytes length:(int)length}
+
+\docparams
+
+\begin{description}
+\item[bytes] \hfill \\ A pointer to a C byte array. Must not be \code{NULL}.
+\item[length] \hfill \\ The length of the array the \emph{bytes} parameter points to.
+\end{description}
+
+\docdiscuss
+
+This method copies the binary representation of a big integer object into the given C byte array. Data comes in the little endian byte order; in other words, the lowest bits of the big integer value go in the lowest indexes of the array, while the highest bits of the value go in the highest indexes of the array.
+
+If the binary representation of the big integer is shorter than length bytes, the array is filled up with zeroes. On the other hand, if it is longer, only the first \emph{length} bytes are copied into the array and the highest bits are lost.
+
+%----------------------------------------------------------
+
+\functionname{greatestCommonDivisor:}
+
+Determines the greatest common divisor of the receiver and the given big integer.
+
+\code{- (BigInteger *)greatestCommonDivisor:(BigInteger *)bigint}
+
+\docparams
+
+\begin{description}
+\item[bigint] \hfill \\ A big integer value.
+\end{description}
+
+\docretval
+
+A \code{BigInteger} object containing the greatest common divisor of the receiver and \emph{bigint}.
+
+\docdiscuss
+
+The operation is performed using the Euclid's algorithm. Both the receiver and the \emph{bigint} parameter are expected to be strictly positive. If one of them is negative or null, the function raises an exception.
+
+%----------------------------------------------------------
+
+\functionname{hash}
+
+Returns an unsigned integer that can be used as a hash table address.
+
+\code{- (NSUInteger)hash}
+
+\docretval
+
+An unsigned integer that can be used as a hash table address.
+
+\docdiscuss
+
+Two \code{BigInteger} objects holding the same value (i.e. calling the \functionlink{compare:} method on them returns \code{NSOrderedSame}) are guaranteed to have the same hash. The reverse is not true however; two \code{BigInteger} objects having the same hash may hold different values.
+
+Since the definition of \code{NSUInteger} by Cocoa depends on the platform, this function does not return the same hash value on 32-bit and 64-bit architectures. You should not therefore exchange the value returned by this function between platforms having different integer sizes.
+
+%----------------------------------------------------------
+
+\functionname{initWithBigInteger:}
+
+Returns a \code{BigInteger} object initialized by copying the content of another given big integer.
+
+\code{- (id)initWithBigInteger:(BigInteger *)bigint}
+
+\docparams
+
+\begin{description}
+\item[bigint] \hfill \\ The big integer object from which to copy the content. Must not be \code{nil}.
+\end{description}
+
+\docretval
+
+A \code{BigInteger} object initialized by copying the content of the \emph{bigint} parameter.
+
+%----------------------------------------------------------
+
+\functionname{initWithCoder:}
+
+Returns an object initialized from data in a given unarchiver.
+
+\code{- (id)initWithCoder:(NSCoder *)decoder}
+
+\docparams
+
+\begin{description}
+\item[decoder] \hfill \\ An unarchiver object.
+\end{description}
+
+\docretval
+
+A \code{BigInteger} object initialized with data in \emph{decoder}.
+
+\docdiscuss
+
+The \code{BigInteger} class only supports keyed archiving. If the \emph{decoder} parameter points to an encoder that does not support keyed archiving, an exception is thrown.
+
+The encoding format is platform independent. An archive written on a 32-bit architecture can be read on a 64-bit architecture and conversely. This may prove useful when exchanging data between an iOS client application and a 64-bit server application, for example.
+
+For more information about serializing and archiving objects, please refer to the \code{NSCoding} protocol in the Cocoa documentation.
+
+%----------------------------------------------------------
+
+\functionname{initWithInt32:}
+
+Initializes and returns a big integer containing a given 32-bit signed value.
+
+\code{- (id)initWithInt32:(int32\_t)x}
+
+\docparams
+
+\begin{description}
+\item[x] \hfill \\ The value for the new big integer.
+\end{description}
+
+\docretval
+
+A \code{BigInteger} object containing \emph{x}.
+
+%----------------------------------------------------------
+
+\functionname{initWithRandomNumberOfSize:exact:}
+
+Initializes and returns a \code{BigInteger} object containing a random value.
+
+\code{- (id)initWithRandomNumberOfSize:(int)bitcount exact:(BOOL)exact}
+
+\docparams
+
+\begin{description}
+\item[bitcount] \hfill \\ Length in bits of the generated random number. Should be greater than or equal to 2.
+\item[exact] \hfill \\ Indicates whether the returned big integer should contain exactly bitcount bits or not. See discussion below.
+\end{description}
+
+\docretval
+
+A \code{BigInteger} object containing a random value of the specified length.
+
+\docdiscuss
+
+If the \emph{exact} parameter is set to \code{YES}, the returned big integer is exactly \emph{bitcount} bits long; in other words, its highest bit is always 1. If the \emph{exact} parameter is set to \code{NO}, all the bits in the returned big integer are fully random; this implies its length may be a little shorter than \emph{bitcount} bits if by chance the highest bits are 0's.
+
+This method internally uses the BSD \code{arc4random()} pseudo-random number generator. You don't need to seed this generator as it initializes itself the first time it is called. Please refer to "Mac OS X Manual Page For ARC4RANDOM(3)" for more information.
+
+%----------------------------------------------------------
+
+\functionname{initWithString:radix:}
+
+Initializes and returns a \code{BigInteger} object from the given string representation of an integer.
+
+\code{- (id)initWithString:(NSString *)num radix:(int)radix}
+
+\docparams
+
+\begin{description}
+\item[num] \hfill \\ The string representation of an integer. Must not be \code{nil}.
+\item[radix] \hfill \\ The radix to use to interpret \emph{num}. Should lie between 2 and 36 inclusive.
+\end{description}
+
+\docretval
+
+A \code{BigInteger} object initialized by translating the given string representation of an integer in the specified radix, or \code{nil} if an error occurs.
+
+\docdiscuss
+
+The allowed string representation consists of an optional minus sign followed by a sequence of one or more digits in the specified radix. The string should not contain any extraneous characters, such as white spaces for example.
+
+%----------------------------------------------------------
+
+\functionname{initWithUnsignedInt32:}
+
+Initializes and returns a big integer containing a given 32-bit unsigned value.
+
+\code{- (id)initWithUnsignedInt32:(uint32\_t)x}
+
+\docparams
+
+\begin{description}
+\item[x] \hfill \\ The value for the new big integer.
+\end{description}
+
+\docretval
+
+A \code{BigInteger} object containing \emph{x}.
+
+%----------------------------------------------------------
+
+\functionname{intValue}
+
+Returns the value of the receiver as a 32-bit signed integer value.
+
+\code{- (int32\_t)intValue}
+
+\docretval
+
+The integer value of the receiver.
+
+\docdiscuss
+
+If the receiver contains a value that does not fit into a 32-bit signed integer, an exception is raised. A 32-bit signed integer can represent values from $-2^{31}$ to $2^{31}-1$ inclusive.
+
+%----------------------------------------------------------
+
+\functionname{inverseModulo:}
+
+Computes the modular multiplicative inverse of the receiver.
+
+\code{- (BigInteger *)inverseModulo:(BigInteger *)mod}
+
+\docparams
+
+\begin{description}
+\item[mod] \hfill \\ The modulus. Must not be \code{nil}.
+\end{description}
+
+\docretval
+
+A \code{BigInteger} object containing a value such as multiplying this value by the receiver modulo \emph{mod} yields 1, or \code{nil} if this value does not exist.
+
+\docdiscuss
+
+The operation is performed using the extended Euclid's algorithm. The \emph{mod} parameter is expected to be strictly positive. If it is negative or null, an exception is raised.
+
+The modular multiplicative inverse is only defined if the receiver and \emph{mod} are relatively primes, that is $\gcd(receiver, mod) = 1$. In case the modular inverse is undefined, this function returns \code{nil}.
+
+%----------------------------------------------------------
+
+\functionname{isEqual:}
+
+Indicates whether the receiver and a given object are equal.
+
+\code{- (BOOL)isEqual:(id)object}
+
+\docparams
+
+\begin{description}
+\item[object] \hfill \\ The object to be compared to the receiver.
+\end{description}
+
+\docretval
+
+\code{YES} if \emph{object} is a \code{BigInteger} object containing the same integer value than the receiver;  \code{NO} otherwise.
+
+\docdiscuss
+
+Two \code{BigInteger} objects are equal if they contain the same integer value, that is calling the \functionlink{compare:} function on them returns \code{NSOrderedSame}.
+
+This function inherited from \code{NSObject} is intended to compare any kind of objects. If you wish to specifically compare two \code{BigInteger} objects, prefer using the faster \functionlink{isEqualToBigInteger:} function.
+
+%----------------------------------------------------------
+
+\functionname{isEqualToBigInteger:}
+
+Indicates whether the receiver and a given big integer are equal.
+
+\code{- (BOOL)isEqualToBigInteger:(BigInteger *)bigint}
+
+\docparams
+
+\begin{description}
+\item[bigint] \hfill \\ The \code{BigInteger} object to be compared to the receiver.
+\end{description}
+
+\docretval
+
+\code{YES} if \emph{bigint} is not \code{nil} and \emph{bigint} and the receiver contain the same integer value;  \code{NO} otherwise.
+
+\docdiscuss
+
+Two \code{BigInteger} objects are equal if they contain the same integer value, that is calling the \functionlink{compare:} function on them returns \code{NSOrderedSame}.
+
+%----------------------------------------------------------
+
+\functionname{isEven}
+
+Indicates whether the receiver contains an even value.
+
+\code{- (BOOL)isEven}
+
+\docretval
+
+\code{YES} if the receiver contains an even value, that is a value whose the lowest bit is 0; \code{NO} otherwise.
+
+%----------------------------------------------------------
+
+\functionname{isOdd}
+
+Indicates whether the receiver contains an odd value.
+
+\code{- (BOOL)isOdd}
+
+\docretval
+
+\code{YES} if the receiver contains an odd value, that is a value whose the lowest bit is 1; \code{NO} otherwise.
+
+%----------------------------------------------------------
+
+\functionname{isProbablePrime}
+
+Determines whether the receiver contains a prime number, using a probabilistic primality test.
+
+\code{- (BOOL)isProbablePrime}
+
+\docretval
+
+\code{YES} if the receiver contains an integer value that is a probable prime; \code{NO} otherwise.
+
+\docdiscuss
+
+The receiver is first checked against a table of small primes, to immediately reject numbers that are trivial multiples of 2, 3, 5, 7, 11 and so on. Then, several Miller-Rabin trials are performed. If none succeeds, the function concludes the number is probably prime.
+
+The number of Miller-Rabin trials depends on the length of the number to test and ranges from 5 to 30. The shorter the bit count, the greater the number of trials. This ensures the probability of a false positive stays below $2^{-80}$, which should be enough for most applications.
+
+%----------------------------------------------------------
+
+\functionname{isZero}
+
+Indicates whether the receiver contains zero or not.
+
+\code{- (BOOL)isZero}
+
+\docretval
+
+\code{YES} if the receiver contains zero; \code{NO} otherwise.
+
+\docdiscuss
+
+Using this method is much faster and less error-prone than extracting the content of the receiver with \functionlink{intValue} or \functionlink{longValue} and comparing the result with zero.
+
+%----------------------------------------------------------
+
+\functionname{longValue}
+
+Returns the value of the receiver as a 64-bit signed integer value.
+
+\code{- (int64\_t)longValue}
+
+\docretval
+
+The value of the receiver.
+
+\docdiscuss
+
+If the receiver contains a value that does not fit into a 64-bit signed integer, an exception is raised. A 64-bit signed integer can represent values from $-2^{63}$ to $2^{63} - 1$ inclusive.
+
+%----------------------------------------------------------
+
+\functionname{multiply:}
+
+Multiplies the receiver with a given big integer and returns the result.
+
+\code{- (BigInteger *)multiply:(BigInteger *)mul}
+
+\docparams
+
+\begin{description}
+\item[mul] \hfill \\ The big integer to multiply with the receiver. Must not be \code{nil}.
+\end{description}
+
+\docretval
+
+The result of the multiplication of the receiver by \emph{mul}.
+
+%----------------------------------------------------------
+
+\functionname{multiply:modulo:}
+
+Multiplies the receiver with a given big integer modulo a given modulus.
+
+\code{- (BigInteger *)multiply:(BigInteger *)mul modulo:(BigInteger *)mod}
+
+\docparams
+
+\begin{description}
+\item[mul] \hfill \\ The big integer to multiply with the receiver. Must not be \code{nil}.
+\item[mod] \hfill \\ The modulus. Must not be \code{nil}.
+\end{description}
+
+\docretval
+
+The result of the multiplication of the receiver by \emph{mul} modulo \emph{mod}.
+
+\docdiscuss
+
+The modulus is expected to be strictly positive. The function raises an exception if it is negative or null.
+
+The return value is always positive and normalised between 0 and (modulus - 1).
+
+%----------------------------------------------------------
+
+\functionname{negate}
+
+Returns the opposite of the receiver.
+
+\code{- (BigInteger *)negate}
+
+\docretval
+
+The opposite of the receiver.
+
+%----------------------------------------------------------
+
+\functionname{nextProbablePrime}
+
+Determines the first prime number greater than or equal to the receiver, using a probabilistic primality test.
+
+\code{- (BigInteger *)nextProbablePrime}
+
+\docretval
+
+The first prime number that is greater than or equal to the receiver in absolute value.
+
+\docdiscuss
+
+The function loops, enumerating all odd numbers starting with the initial receiver absolute value, until it finds a probable prime. If the receiver contains a negative value, the return value is negative. For example, calling this function on 12 returns 13, while calling it on -12 returns -13.
+
+This function internally calls \functionlink{isProbablePrime} to determine whether a given number is prime or composite. Refer to the documentation of that function for more information on the primality test it implements.
+
+%----------------------------------------------------------
+
+\functionname{shiftLeft:}
+
+Shifts the bits of the receiver to the left by the specified amount.
+
+\code{- (BigInteger *)shiftLeft:(int)count}
+
+\docparams
+
+\begin{description}
+\item[count] \hfill \\ The number of bits by which the receiver should be shifted.
+\end{description}
+
+\docretval
+
+A \code{BigInteger} object containing the value of the receiver shifted left by the specified amount.
+
+%----------------------------------------------------------
+
+\functionname{shiftRight:}
+
+Shifts the bits of the receiver to the right by the specified amount.
+
+\code{- (BigInteger *)shiftRight:(int)count}
+
+\docparams
+
+\begin{description}
+\item[count] \hfill \\ The number of bits by which the receiver should be shifted.
+\end{description}
+
+\docretval
+
+A \code{BigInteger} object containing the value of the receiver shifted right by the specified amount.
+
+\docdiscuss
+
+Unlike native types, the \code{BigInteger} class does not represent negative values using 2's complement but with an extra sign bit. Therefore, shifting right negative big integers does not produce the same result as shifting right negative \code{int} or \code{long} values.
+
+For example, $-17 >> 1$ yields -9 when performed on an \code{int} value, while it yields -8 when performed on a \code{BigInteger} object.
+
+%----------------------------------------------------------
+
+\functionname{sign}
+
+Returns the sign of the receiver.
+
+\code{- (int)sign}
+
+\docretval
+
+-1 if the receiver contains a negative value; +1 if it contains a positive value; 0 if it contains zero.
+
+%----------------------------------------------------------
+
+\functionname{sub:}
+
+Subtract the given big integer from the receiver and returns the result.
+
+\code{- (BigInteger *)sub:(BigInteger *)x}
+
+\docparams
+
+\begin{description}
+\item[x] \hfill \\ The big integer to be subtracted from the receiver. Must not be \code{nil}.
+\end{description}
+
+\docretval
+
+A \code{BigInteger} object containing the result of the subtraction of \emph{x} from the receiver.
+
+%----------------------------------------------------------
+
+\functionname{toRadix:}
+
+Prints the value of the receiver to a string in the specified radix.
+
+\code{- (NSString *)toRadix:(int)radix}
+
+\docparams
+
+\begin{description}
+\item[radix] \hfill \\ The radix. Should lie between 2 and 36.
+\end{description}
+
+\docretval
+
+The textual representation of the receiver, expressed in the specified radix. This representation consists of an optional minus sign, immediately followed by one or more digits.
+
+\docdiscuss
+
+The function does not insert extraneous characters, such as thousand separators.
+
+%----------------------------------------------------------
